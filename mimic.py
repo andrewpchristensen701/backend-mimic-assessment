@@ -42,14 +42,21 @@ Could work on getting it to put in linebreaks around 70
 columns, so the output looks better.
 
 """
+__author__: "andrewpchristensen701"
 
 import random
 import sys
 
 
+
 def mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it."""
-    # +++your code here+++
+    with open(filename, "r") as f:
+        f_split = f.read().split()
+        w_dict = {}
+        p_string = ''
+        for word in f_split:
+            if p_string
     raise NotImplementedError("Get to Work!")
 
 
