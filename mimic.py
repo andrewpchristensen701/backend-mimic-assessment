@@ -42,25 +42,37 @@ Could work on getting it to put in linebreaks around 70
 columns, so the output looks better.
 
 """
+__author__ = "andrewpchristensen701"
 
 import random
 import sys
 
 
+
 def mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it."""
-    # +++your code here+++
+    with open(filename, "r") as f:
+        f_split = f.read().split()
+        w_dic = {}
+        p_string = ''
+        for word in f_split:
+            if p_string not in w_dic:
+                w_dic[p_string] = [word]
+            else: 
+                w_dic[p_string].append(word)
+            p_string = word
+    return w_dic
+    
     raise NotImplementedError("Get to Work!")
 
 
 def print_mimic(mimic_dict, word):
-    """Given mimic dict and start word, prints 200 random words:
-        - Start with '' (empty string) as a seed word.
-        - Print the seed word
-        - Lookup this word in your mimic_dict and get it's value list
-        - Randomly select a new seed word from this word list
-        - Repeat this process 200 times
-    """
+    for _ in range(200):
+        print word,
+        next_word_list = mimic_dict.get(word)
+        if not next_word_list:
+            next_word_list = mimic_dict['']
+        word = random.choice(next_word_list)
     # +++your code here+++
     raise NotImplementedError("Get to Work!")
 
